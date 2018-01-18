@@ -1,0 +1,93 @@
+.gradual-orange {
+  background-image:url("../img/grad_orange.png");
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+
+#page-container {
+  padding:0;
+}
+
+.brand-font {
+  font-family:'Ubuntu Mono', monospace;
+  font-size:42px;
+}
+
+.row {
+  margin:0;
+}
+
+.usual-padd {
+  padding:2%;
+}
+
+.selected-font {
+  font-family:'Russo One', sans-serif;
+}
+
+.tutorial-img {
+  max-height:500px;
+}
+
+img {
+  max-width:100%;
+}
+
+.small-brand-font {
+  font-size:26px;
+  font-family:'Ubuntu Mono', monospace;
+}
+
+#bottom-navbar {
+  margin:1%;
+}
+
+.app-card {
+  /*margin:5px;*/
+  height:100%;
+}
+
+.no-padd {
+  padding:0;
+  padding-top:0;
+  padding-right:0;
+  padding-bottom:0;
+  padding-left:0;
+}
+
+#page-body {
+  background-color:rgb(233,236,233);
+}
+
+#photo-card {
+  min-height:300px;
+}
+
+.margin-bottom {
+  margin-bottom:100px;
+}
+
+.px-padd {
+  padding:3px;
+}
+
+.app-div {
+  height:100%;
+}
+
+.photo-btn {
+  height:70px;
+  font-size:25px;
+}
+
+.btn.btn-light {
+}
+
+.small-margin {
+  margin:0.5%;
+}
+
+.large-padd {
+  padding:4%;
+}
+

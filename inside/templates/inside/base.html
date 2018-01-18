@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fast-eval</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Russo+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700">
+    <link rel="stylesheet" href="{% static 'css/Features-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<title>fast-eval</title>
+</head>
+
+<body id="page-body">
+    <div class="selected-font margin-bottom">
+        <div class="px-padd">
+            <div class="card gradual-orange app-card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="text-white selected-font">{% block name %}{% endblock %}</h2>
+                        </div>
+                        <div class="col">
+                            <p class="text-white text-right">{{ request.user.username }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="px-padd">
+        {% block content %}
+        {% endblock %}
+        </div>
+    </div>
+    <!-- bottom navbar -->
+    <nav class="navbar navbar-dark navbar-expand-md fixed-bottom gradual-orange selected-font" id="bottom-navbar">
+        <div class="container-fluid"><a class="navbar-brand small-brand-font" href="#"><strong>fast-eval </strong></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse flex-row-reverse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'evaluate' %}">evaluate </a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'answersheets' %}">answersheets </a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" data-target="#contacts" data-toggle="modal">contact </a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">buy evaluations</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'auth:logout' %}">log out</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <!-- contact modal -->
+    <div class="modal fade selected-font" role="dialog" tabindex="-1" id="contacts">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">contact</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">email</h5>
+                    <p class="text-center">info@fast-eval.com </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+
+    {% block script %}
+    {% endblock %}
+</body>
+
+</html>

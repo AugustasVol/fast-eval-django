@@ -1,0 +1,88 @@
+{% extends "inside/base.html" %}
+{% load static %}
+    {% block name %}
+    evaluate
+    {% endblock %}
+    {% block content %}
+            <div class="card app-card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3 usual-padd">
+                            <button class="btn btn-outline-warning" onclick="$('#right-answers-div').toggle()">hide / show</button>
+                        </div>
+                        <div class="col-sm-12 col-md-9 col-lg-9 col-xl-9 usual-padd">
+                            <h4 class="text-center">right answers</h4>
+                            <div id="right-answers-div">
+                                <h6 class="text-center">select number of questions</h6>
+                                <div class="usual-padd">
+                                    <button class="btn btn-light small-margin" onclick="create_right_tables('right-answers-table-0', 'right-answers-table-1',20)">Q20</button>
+                                    <button class="btn btn-light small-margin" onclick="create_right_tables('right-answers-table-0', 'right-answers-table-1',30)">Q30</button>
+                                    <button class="btn btn-light small-margin" onclick="create_right_tables('right-answers-table-0', 'right-answers-table-1',40)">Q40</button>
+                                    <button class="btn btn-light small-margin" onclick="create_right_tables('right-answers-table-0', 'right-answers-table-1',50)">Q50</button>
+                                    <button class="btn btn-light small-margin" onclick="create_right_tables('right-answers-table-0', 'right-answers-table-1',10)">Q10</button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 no-padd">
+                                        <table class="table table-striped float-left">
+                                            <tbody id="right-answers-table-0"></tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-6 no-padd">
+                                        <table class="table table-striped">
+                                            <tbody id="right-answers-table-1"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-2 col-xl-2 no-padd">
+                <div class="px-padd app-div">
+                    <div class="card app-card">
+                        <div class="card-body">
+                            <h5 class="text-center">credits <strong id="credits">{{ credit }} </strong></h5>
+                            <button class="btn btn-warning btn-block photo-btn" onclick="getElementById('image_file').click()">photo</button><input class="m-auto" type="file" accept="image/*" required="" id="image_file" hidden=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-5 col-xl-5 no-padd">
+                <div class="px-padd app-div">
+                    <div class="card app-card">
+                        <div class="card-body">
+                            <h4 class="text-center"> results</h4>
+                            <h6 class="text-center" id="overall-score"> </h6>
+                            <div class="row">
+                                <div class="col-6 no-padd">
+                                    <table class="table float-left">
+                                        <tbody id="wrong-answers-table-0"></tbody>
+                                    </table>
+                                </div>
+                                <div class="col-6 no-padd">
+                                    <table class="table">
+                                        <tbody id="wrong-answers-table-1"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-5 col-xl-5 no-padd">
+                <div class="px-padd app-div">
+                    <div class="card app-card">
+                        <div class="card-body align-self-center" id="photo-card">
+                            <h4 class="text-center">photo </h4><img class="flex-nowrap tutorial-img" id="photo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block script %}
+    <script type="text/javascript">
+        JSON_URL = "{% url 'predict' %}"
+    </script>
+    <script src="{% static 'js/inside/eval-script.js' %}"></script>
+    {% endblock %}

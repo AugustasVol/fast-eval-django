@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html id="page" style="color:rgb(232,232,232);">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fast-eval</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Russo+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700">
+    <link rel="stylesheet" href="{% static 'css/Features-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<title>fast-eval</title>
+</head>
+
+<body>
+    <div id="landing-header" class="gradual-orange usual-padd selected-font">
+        <nav class="navbar navbar-dark navbar-expand-sm" id="landing-navbar">
+            <div class="container-fluid"><a class="navbar-brand brand-font" href="#"><strong>fast-eval</strong> </a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse flex-row-reverse" id="navcol-1"><a class="btn btn-outline-light btn-lg" role="button" href="{% url 'evaluate' %}">log in / sign up</a></div>
+    </div>
+    </nav>
+    <div class="container-1 usual-padd">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 usual-padd">
+                <h2 class="text-light">Make written test evaluation faster </h2>
+                <p class="text-light">Evaluate written multiple choice tests using your smartphone easy, fast and safe. Be more efficient in your business.</p><a class="btn btn-outline-light btn-lg" role="button" href="#tutorial">see how</a></div>
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 usual-padd"><img class="float-right tutorial-img" src="{% static 'img/outside/land.jpg' %}"></div>
+        </div>
+    </div>
+    </div>
+    <div id="features" class="features-clean selected-font">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center selected-font">Features</h2>
+                <p class="text-center selected-font"> </p>
+            </div>
+            <div class="row features selected-font">
+                <div class="col-sm-6 col-lg-4 item"><i class="material-icons icon">phone_iphone</i>
+                    <h3 class="name">Use your phone</h3>
+                    <p class="description">Mark the right answers, photo and evaluate, everythingin the web app on your phone.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item selected-font"><i class="material-icons icon">phonelink</i>
+                    <h3 class="name">Works everywhere</h3>
+                    <p class="description">Web app works great in smartphones and tablets, also a computer can be used. On any platform.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="material-icons icon">lock_outline</i>
+                    <h3 class="name">Safe </h3>
+                    <p class="description">None of the ansersheet data is stored. Photos are analyzed on the server, but the evaluation is done on the browser using Javascript. Entered answers are seen only by you.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="material-icons icon">touch_app</i>
+                    <h3 class="name">Easy to use</h3>
+                    <p class="description">Interface is straightforward, minimal fuss.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="answersheet" class="features-clean selected-font">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center selected-font">Answersheet </h2>
+                <p class="text-center selected-font"> </p>
+            </div>
+            <div class="row features selected-font">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 item selected-font">
+                    <h3 class="name">Optimized for computer vision</h3>
+                    <p class="description">Choose a ready to print PDF.</p>
+                    <p> </p>
+                    <p class="description">Select sheets containing 10, 20, 30, 40, 50 number of questions.</p>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 item">
+                    <p>Black squares help to locate areas with answers.</p><img src="{% static 'img/q30.png' %}" class="tutorial-img"></div>
+            </div>
+        </div>
+    </div>
+    <div id="tutorial" class="features-clean selected-font">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">How to</h2>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col usual-padd">
+                            <button class="btn btn-outline-warning float-right" onclick="steps(['step0', 'step1', 'step2','step3','step4'])">Next step</button>
+                        </div>
+                    </div>
+                    <div id="step0">
+                        <div class="row features">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 item">
+                                <h3 class="name">Select and print</h3>
+                                <p class="description">Select how many questions an ansersheet should contain, download PDF and print.</p>
+                            </div>
+                            <div class="col"><img class="rounded tutorial-img" src="{% static 'img/outside/select_shape.jpg' %}"></div>
+                        </div>
+                    </div>
+                    <div id="step1" hidden="">
+                        <div class="row features">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 item">
+                                <h3 class="name">Answer the questions</h3>
+                                <p class="description">Answer as good as you can.</p>
+                            </div>
+                            <div class="col"><img class="rounded tutorial-img" src="{% static 'img/outside/write_answers.jpg' %}"></div>
+                        </div>
+                    </div>
+                    <div id="step2" hidden="">
+                        <div class="row features">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 item">
+                                <h3 class="name">Mark the right answers in the web app</h3>
+                                <p class="description">Once ready to evaluate, log in, go to the evaluation page, select answersheet type, and mark the right answers, so that the work could be evaluated.</p>
+                            </div>
+                            <div class="col"><img class="rounded tutorial-img" src="{% static 'img/outside/select_answers.jpg' %}"></div>
+                        </div>
+                    </div>
+                    <div id="step3" hidden="">
+                        <div class="row features">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 item">
+                                <h3 class="name">Photo </h3>
+                                <p class="description">Using your smartphone take a photo in the web app or using your computer upload the picture.</p>
+                            </div>
+                            <div class="col"><img class="rounded tutorial-img" src="{% static 'img/outside/take_photo.jpg' %}"></div>
+                        </div>
+                    </div>
+                    <div id="step4" hidden="">
+                        <div class="row features">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 item">
+                                <h3 class="name">Get the results</h3>
+                                <p class="description">Evaluate as many works as needed.</p>
+                            </div>
+                            <div class="col"><img class="rounded tutorial-img" src="{% static 'img/outside/get_10.jpg' %}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pricing" class="features-clean selected-font">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center selected-font">Pricing </h2>
+                <p class="text-center selected-font"> </p>
+            </div>
+            <div class="row features selected-font">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 item selected-font"><i class="material-icons icon">done</i>
+                    <h3 class="name">First 50 evaluations free</h3>
+                    <p class="description">Try before paying anything.</p>
+                    <p class="description">Just sign up and start using.</p>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 item selected-font"><i class="material-icons icon">attach_money</i>
+                    <h3 class="name">Plain and simple pricing model</h3>
+                    <p class="description">Buy a number of evaluations.</p>
+                    <p class="description">Evaluate as much as you need and pay no more</p>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 item selected-font"><i class="material-icons icon">add_shopping_cart</i>
+                    <h3 class="name">Pay as much as you use</h3>
+                    <p class="description">$0.1 per 1 evaluation.</p>
+                    <p class="description">$10 per 100 evaluations.</p>
+                    <p class="description">Evaluations are sold in bundles of 100.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="footer-basic selected-font">
+        <footer>
+            <ul class="list-inline" hidden="">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">fast-eval.com </p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/outside/steps.js' %}"></script>
+</body>
+
+</html>
