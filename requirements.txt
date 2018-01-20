@@ -1,7 +1,5 @@
 django
 social-auth-app-django
 python-dotenv
-python-jose
-six
 psycopg2
 #written_test_automation as a django app
