@@ -149,12 +149,52 @@ function json_post(json, link_uri, success_function, error_function) {
     })
 };
 // listener of file reader
-function get_file_apply(id, onload_function) {
+function resize_image_uri(uri,max_image_h, onload_function) {
+    // Takes a data URI and returns the Data URI corresponding to the resized image at the wanted size.
+        // We create an image to receive the Data URI
+        var img = document.createElement('img');
+
+        // When the event "onload" is triggered we can resize the image.
+        img.onload = function()
+            {        
+                // We create a canvas and get its context.
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext('2d');
+
+                // We set the dimensions at the wanted size.
+
+                // determine the scale ration for resizing
+                if (this.width > this.height) {
+                    ratio = 0.1; // if wrong side rotated any small number
+                }
+                else {
+                    ratio = max_image_h / this.height;
+                }
+
+                new_height = parseInt(this.height * ratio);
+                new_width = parseInt(this.width * ratio);
+                canvas.width = new_width;
+                canvas.height = new_height;
+                console.log("image resize: "+ new_width+","+new_height);
+                // We resize the image with the canvas method drawImage();
+                ctx.drawImage(this, 0, 0, new_width, new_height);
+
+                var dataURI = canvas.toDataURL('image/jpeg', 0.5);
+
+                onload_function(dataURI);
+            };
+
+        // We put the Data URI in the image's src attribute
+        img.src = uri;
+}
+function get_file_apply(id, onload_function, max_image_h) {
     $(function () {
         $("#"+id).change(function () {
             if (this.files) {
                 var reader = new FileReader();
-                reader.onload = onload_function;
+                reader.onload = function (item) {
+                    resize_image_uri(item.target.result,max_image_h, onload_function);
+                }
                 reader.readAsDataURL(this.files[0]);
             }
         });
@@ -194,8 +234,8 @@ function display_response_data(response,
 
 
 // functions and variables with ids and names
-function onload_picture(item) {
-    image_string = item.target.result;
+function onload_picture(image_uri) {
+    image_string = image_uri;
     delete_image("photo");
     delete_wrong_tables("wrong-answers-table-0","wrong-answers-table-1","overall-score");
     display_image(image_string, "photo");
@@ -215,4 +255,5 @@ function onload_picture(item) {
 }
 // JSON_URL = "#"
 OPTIONS_NAMES = ["A", "B", "C", "D", "E","None"];
-get_file_apply("image_file", onload_picture);
+MAX_IMAGE_H = 2000;
+get_file_apply("image_file", onload_picture, MAX_IMAGE_H);
