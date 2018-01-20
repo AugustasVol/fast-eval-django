@@ -187,6 +187,9 @@ function display_response_data(response,
                     overall_score_id);
         replace_text(credits_id, response["credit"]);
     }
+    else {
+        replace_text(overall_score_id, "No prediction");
+    }
 }
 
 

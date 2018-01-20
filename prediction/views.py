@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-import json
+import ujson as json
 import numpy as np
 # Create your views here.
 from userdata.models import get_credit, add_credit, user_unlimited
@@ -23,8 +23,7 @@ def predict(request):
     credit = get_credit(user_id)
     if not ((credit > 0) or user_unlimited(user_id)):
         return no_prediction(request)
-
-    json_content = json.loads(request.body)
+    json_content = json.loads(request.body.decode("utf-8"))
     image = pre.imread_uri(json_content["image_uri"])
 
     try:
