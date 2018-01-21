@@ -17,7 +17,8 @@ def get_credit(user_id):
     return credit.objects.get_or_create(user_id=user_id)[0].credit
 def add_credit(user_id, added_number):
     credit_model = credit.objects.get_or_create(user_id=user_id)[0]
-    if (credit_model.credit > 0):
-        credit_model.credit = credit_model.credit + int(added_number)
-        credit_model.save()
+    credit_model.credit = credit_model.credit + int(added_number)
+    if (credit_model.credit < 0):
+        credit_model.credit = 0
+    credit_model.save()
     return credit_model.credit
