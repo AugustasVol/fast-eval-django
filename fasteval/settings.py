@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'userdata',
     'auth0login',
     'social_django',
+    "paypal.standard.ipn",
+    "collect_paypal",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,6 +134,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = '/'
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
+
+# paypal variables
+
+PAYPAL_TEST = True
+
+PAYPAL_BUY_BUTTON_IMAGE = "https://www.paypalobjects.com/webstatic/en_US/i/buttons/buy-logo-medium.png"
+
+PAYPAL_RECEIVER_EMAIL = os.environ.get("PAYPAL_RECEIVER_EMAIL")
+COLLECT_AMOUNT = os.environ.get("COLLECT_AMOUNT")
 
 # SOCIAL AUTH  AUTH0 BACKEND CONFIG
 SOCIAL_AUTH_TRAILING_SLASH = False

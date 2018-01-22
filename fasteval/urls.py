@@ -21,6 +21,7 @@ urlpatterns = [
 
     url(r'^', include("outside.urls")),
     url(r'^', include("auth0login.urls")),
+    url(r"^", include("collect_paypal.urls")),
 
     url(r'^in/', include("inside.urls")),
     url(r'^prediction', include("prediction.urls")),

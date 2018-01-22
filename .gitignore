@@ -101,5 +101,6 @@ ENV/
 .mypy_cache/
 
 #project specific
+static/admin/
 written_test_automation/
 db.sqlite3

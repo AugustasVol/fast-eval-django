@@ -2,5 +2,6 @@ django
 social-auth-app-django
 python-dotenv
 ujson
+django-paypal
 psycopg2
 #written_test_automation as a django app
