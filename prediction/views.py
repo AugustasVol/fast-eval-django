@@ -4,6 +4,7 @@ import ujson as json
 import numpy as np
 # Create your views here.
 from userdata.models import get_credit, add_credit, user_unlimited
+from auth0login.models import email_verified
 from written_test_automation import result
 from written_test_automation import pre
 
@@ -17,6 +18,9 @@ def predict(request):
 
     user = request.user
     if not user.is_authenticated:
+        return no_prediction(request)
+
+    if not email_verified(user):
         return no_prediction(request)
 
     user_id = user.id

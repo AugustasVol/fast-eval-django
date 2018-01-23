@@ -8,7 +8,7 @@ class Auth0(BaseOAuth2):
     SCOPE_SEPARATOR = ' '
     ACCESS_TOKEN_METHOD = 'POST'
     EXTRA_DATA = [
-        ('picture', 'picture')
+        ('email_verified', 'email_verified')
     ]
     
     def authorization_url(self):
@@ -31,4 +31,5 @@ class Auth0(BaseOAuth2):
 
         return {'username': userinfo['nickname'],
                 'first_name': userinfo['name'],
-                'user_id': userinfo['sub']}
+                'user_id': userinfo['sub'],
+                'email_verified':userinfo['email_verified']}

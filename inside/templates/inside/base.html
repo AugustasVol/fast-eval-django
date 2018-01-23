@@ -26,9 +26,18 @@
                             <h2 class="text-white selected-font">{% block name %}{% endblock %}</h2>
                         </div>
                         <div class="col">
-                            <p class="text-white text-right">{{ request.user.username }}</p>
+                            <p class="text-white text-right">{{ username }}</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="px-padd" {{ email_message }}>
+            <div class="card app-card">
+                <div class="card-body">
+                    <h3 class="text-center">
+                        In order to use - please verify your email, then logout and login.
+                    </h3>
                 </div>
             </div>
         </div>

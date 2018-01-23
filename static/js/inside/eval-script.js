@@ -148,8 +148,24 @@ function json_post(json, link_uri, success_function, error_function) {
         error: something_wrong,
     })
 };
-// listener of file reader
-function resize_image_uri(uri,max_image_h, onload_function) {
+function rotate_side_image_uri(uri, onload_function) {
+    var img = document.createElement("img");
+    img.onload = function () {
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        canvas.width = this.height;
+        canvas.height = this.width;
+
+        ctx.translate(parseInt(this.height / 2), parseInt(this.width / 2));
+        ctx.rotate(ROTATE_DEGREES * Math.PI / 180);
+        ctx.drawImage(this, -this.width / 2, -this.height / 2);
+
+        var dataURI = canvas.toDataURL('image/jpeg', JPEG_QUALITY);
+        onload_function(dataURI);
+    }
+    img.src = uri;
+}
+function resize_image_uri(uri, onload_function) {
     // Takes a data URI and returns the Data URI corresponding to the resized image at the wanted size.
         // We create an image to receive the Data URI
         var img = document.createElement('img');
@@ -165,10 +181,10 @@ function resize_image_uri(uri,max_image_h, onload_function) {
 
                 // determine the scale ration for resizing
                 if (this.width > this.height) {
-                    ratio = 0.1; // if wrong side rotated any small number
+                    ratio = MAX_IMAGE_H / this.width;
                 }
                 else {
-                    ratio = max_image_h / this.height;
+                    ratio = MAX_IMAGE_H / this.height;
                 }
 
                 new_height = parseInt(this.height * ratio);
@@ -179,21 +195,28 @@ function resize_image_uri(uri,max_image_h, onload_function) {
                 // We resize the image with the canvas method drawImage();
                 ctx.drawImage(this, 0, 0, new_width, new_height);
 
-                var dataURI = canvas.toDataURL('image/jpeg', 0.5);
 
-                onload_function(dataURI);
+                // rotate if needed
+                if (this.width > this.height) {
+                    var dataURI = canvas.toDataURL('image/png');
+                    rotate_side_image_uri(uri, onload_function);
+                }
+                else {
+                    var dataURI = canvas.toDataURL('image/jpeg', JPEG_QUALITY);
+                    onload_function(dataURI);
+                }
             };
 
         // We put the Data URI in the image's src attribute
         img.src = uri;
 }
-function get_file_apply(id, onload_function, max_image_h) {
+function get_file_apply(id, onload_function) {
     $(function () {
         $("#"+id).change(function () {
             if (this.files) {
                 var reader = new FileReader();
                 reader.onload = function (item) {
-                    resize_image_uri(item.target.result,max_image_h, onload_function);
+                    resize_image_uri(item.target.result, onload_function);
                 }
                 reader.readAsDataURL(this.files[0]);
             }
@@ -254,6 +277,8 @@ function onload_picture(image_uri) {
               something_wrong);
 }
 // JSON_URL = "#"
+ROTATE_DEGREES = 270;
+JPEG_QUALITY = 0.5;
 OPTIONS_NAMES = ["A", "B", "C", "D", "E","None"];
 MAX_IMAGE_H = 2000;
-get_file_apply("image_file", onload_picture, MAX_IMAGE_H);
+get_file_apply("image_file", onload_picture);
