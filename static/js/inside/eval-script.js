@@ -277,7 +277,7 @@ function onload_picture(image_uri) {
               something_wrong);
 }
 // JSON_URL = "#"
-ROTATE_DEGREES = 270;
+ROTATE_DEGREES = 90;
 JPEG_QUALITY = 0.5;
 OPTIONS_NAMES = ["A", "B", "C", "D", "E","None"];
 MAX_IMAGE_H = 2000;
