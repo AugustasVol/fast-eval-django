@@ -1,5 +1,10 @@
-// a global variable of OPTIONS_NAMES is required for tables to show
-
+// global setup
+$.ajaxSetup({
+    cache: false,
+    headers: {
+        'Cache-Control': 'no-cache'
+    }
+});
 // helper function to display and delete elements
 function empty_element(id) {
     $("#" + id).empty();
