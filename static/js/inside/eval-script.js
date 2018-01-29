@@ -283,7 +283,7 @@ function onload_picture(image_uri) {
 }
 // JSON_URL = "#"
 ROTATE_DEGREES = 90;
-JPEG_QUALITY = 0.5;
+JPEG_QUALITY = 0.7;
 OPTIONS_NAMES = ["A", "B", "C", "D", "E","None"];
 MAX_IMAGE_H = 2000;
 get_file_apply("image_file", onload_picture);
