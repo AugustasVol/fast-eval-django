@@ -1,10 +1,3 @@
-// global setup
-$.ajaxSetup({
-    cache: false,
-    headers: {
-        'Cache-Control': 'no-cache'
-    }
-});
 // helper function to display and delete elements
 function empty_element(id) {
     $("#" + id).empty();
@@ -144,7 +137,8 @@ function compare_all(right_table_0_id,
 // ajax function to send json to server
 function json_post(json, link_uri, success_function, error_function) {
     $.ajax({
-        headers: { "X-CSRFToken": Cookies.get("csrftoken") },
+        cache: false,
+        headers: { "X-CSRFToken": Cookies.get("csrftoken") , 'Cache-Control':'no-cache' },
         type:"POST",
         url: link_uri,
         data: JSON.stringify(json),
