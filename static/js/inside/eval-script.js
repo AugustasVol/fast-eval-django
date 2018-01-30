@@ -136,16 +136,27 @@ function compare_all(right_table_0_id,
 
 // ajax function to send json to server
 function json_post(json, link_uri, success_function, error_function) {
-    $.ajax({
-        cache: false,
-        headers: { "X-CSRFToken": Cookies.get("csrftoken") , 'Cache-Control':'no-cache' },
-        type:"POST",
-        url: link_uri,
-        data: JSON.stringify(json),
-        contentType: 'application/json',
-        success: success_function ,
-        error: something_wrong,
-    })
+    var request = new Request(link_uri, {
+        method: 'POST', 
+        mode: 'same-origin', 
+        redirect: 'manual',
+        cache:"no-cache",
+        credentials:"same-origin",
+        body:JSON.stringify(json),
+        headers: new Headers({
+            "X-CSRFToken": Cookies.get("csrftoken"),
+            'Content-Type': 'application/json'
+        }),
+
+    });
+
+    fetch(request).then( function(resp) {
+        return resp.json();
+    }).then(
+        success_function
+    ).cactch(
+        error_function
+    );
 };
 function rotate_side_image_uri(uri, onload_function) {
     var img = document.createElement("img");
