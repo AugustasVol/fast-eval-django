@@ -145,7 +145,8 @@ function json_post(json, link_uri, success_function, error_function) {
         body:JSON.stringify(json),
         headers: new Headers({
             "X-CSRFToken": Cookies.get("csrftoken"),
-            'Content-Type': 'application/json'
+            "cache-control":"no-cache",
+            'Content-Type': 'application/json',
         }),
 
     });
@@ -154,7 +155,7 @@ function json_post(json, link_uri, success_function, error_function) {
         return resp.json();
     }).then(
         success_function
-    ).cactch(
+    ).catch(
         error_function
     );
 };
