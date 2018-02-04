@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get("HOST_NAME")]
 
@@ -141,9 +141,14 @@ STATIC_URL = '/'
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
+# save files path
+
+SAVE_PATH=os.environ.get("SAVE_PATH")
+
+
 # paypal variables
 
-PAYPAL_TEST = True
+PAYPAL_TEST = False
 
 PAYPAL_BUY_BUTTON_IMAGE = "https://www.paypalobjects.com/webstatic/en_US/i/buttons/buy-logo-medium.png"
 
