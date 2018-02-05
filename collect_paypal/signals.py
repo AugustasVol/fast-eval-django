@@ -2,7 +2,7 @@ from django.dispatch import receiver
 
 from paypal.standard.models import ST_PP_COMPLETED
 from paypal.standard.ipn.signals import valid_ipn_received
-
+from django.conf import settings
 from userdata.models import add_credit
 
 @receiver(valid_ipn_received)
@@ -13,7 +13,7 @@ def react_to_pay(sender, **kwargs):
         # Check that the receiver email is the same we previously
         # set on the `business` field. (The user could tamper with
         # that fields on the payment form before it goes to PayPal)
-        if ipn_obj.receiver_email != "info-facilitator@fast-eval.com":
+        if ipn_obj.receiver_email != settings.PAYPAL_RECEIVER_EMAIL:
             # Not a valid payment
             return
 

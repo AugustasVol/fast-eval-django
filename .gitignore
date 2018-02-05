@@ -104,3 +104,4 @@ ENV/
 static/admin/
 written_test_automation/
 db.sqlite3
+trainer.ipynb
