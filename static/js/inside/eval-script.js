@@ -16,7 +16,12 @@ function delete_wrong_tables(id_0,id_1,id_score) {
     empty_element(id_1);
     empty_element(id_score);
 }
-
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
 // functions to create one side of table
 function create_right_table(num_rows, start_num,table_id, options_names) {
     if (options_names == null) {
@@ -267,30 +272,7 @@ function display_response_data(response,
 }
 
 
-// functions and variables with ids and names
-function onload_picture(image_uri) {
-    image_string = image_uri;
-    delete_image("photo");
-    delete_wrong_tables("wrong-answers-table-0","wrong-answers-table-1","overall-score");
-    display_image(image_string, "photo");
-    json = {"image_uri":image_string,
-            "collect":document.getElementById("enable-collection").checked};
-    json_post(json,
-              JSON_URL,
-              function (response){
-                    display_response_data(response,
-                                          "right-answers-table-0",
-                                          "right-answers-table-1",
-                                          "wrong-answers-table-0",
-                                          "wrong-answers-table-1",
-                                          "overall-score",
-                                          "credits");
-              },
-              something_wrong);
-}
-// JSON_URL = "#"
 ROTATE_DEGREES = 90;
 JPEG_QUALITY = 0.7;
 OPTIONS_NAMES = ["A", "B", "C", "D", "E","None"];
 MAX_IMAGE_H = 2000;
-get_file_apply("image_file", onload_picture);

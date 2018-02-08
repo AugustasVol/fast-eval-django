@@ -19,11 +19,12 @@ def answersheets(request):
     context = {"email_message": email_message(user),
                "username":request.user.username,
                "collect_amount":settings.COLLECT_AMOUNT,
+               "bundle_size": settings.BUNDLE_SIZE,
                "paypal_form":paypal_form(request)}
     return render(request, "inside/answersheets.html", context)
 
-@login_required
-def evaluate(request):
+def eval(request, multi=False):
+    '''a base function for all evaluation pages'''
     user = request.user
     user_id = request.user.id
     
@@ -33,5 +34,17 @@ def evaluate(request):
                "username":request.user.username,
                "credit":user_credit,
                "collect_amount":settings.COLLECT_AMOUNT,
+               "bundle_size":settings.BUNDLE_SIZE,
                "paypal_form":paypal_form(request)}
-    return render(request, 'inside/eval.html', context)
+    if multi:
+        return render(request, "inside/evaluate_multi.html", context)
+    else:
+        return render(request, "inside/eval.html", context)
+
+@login_required
+def evaluate(request):
+    return eval(request)
+
+@login_required
+def evaluate_multi(request):
+    return eval(request, multi=True)

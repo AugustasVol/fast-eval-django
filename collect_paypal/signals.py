@@ -22,7 +22,7 @@ def react_to_pay(sender, **kwargs):
         # is allowed.
         print(ipn_obj.amount)
         print(ipn_obj.custom)
-        add_credit(int(ipn_obj.custom), 100)
+        add_credit(int(ipn_obj.custom), int(settings.BUNDLE_SIZE))
 
     else:
         return

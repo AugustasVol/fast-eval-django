@@ -9,7 +9,7 @@ def paypal_form(request):
     paypal_dict = {
         "business":settings.PAYPAL_RECEIVER_EMAIL,
         "amount":settings.COLLECT_AMOUNT,
-        "item_name":"100 evaluations",
+        "item_name":settings.BUNDLE_SIZE +"evaluations",
         "notify_url":request.build_absolute_uri(reverse("paypal-ipn")),
         "return_url":request.build_absolute_uri(reverse("evaluate")),
         "cancel_return":request.build_absolute_uri(reverse("evaluate")),

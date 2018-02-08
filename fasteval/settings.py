@@ -154,6 +154,7 @@ PAYPAL_BUY_BUTTON_IMAGE = "https://www.paypalobjects.com/webstatic/en_US/i/butto
 
 PAYPAL_RECEIVER_EMAIL = os.environ.get("PAYPAL_RECEIVER_EMAIL")
 COLLECT_AMOUNT = os.environ.get("COLLECT_AMOUNT")
+BUNDLE_SIZE = os.environ.get("BUNDLE_SIZE")
 
 # SOCIAL AUTH  AUTH0 BACKEND CONFIG
 SOCIAL_AUTH_TRAILING_SLASH = False

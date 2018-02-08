@@ -38,47 +38,50 @@
                     </div>
                 </div>
             </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-3 col-lg-2 col-xl-2 no-padd">
+        <div class="row" id="results-row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 no-padd">
                 <div class="px-padd app-div">
                     <div class="card app-card">
                         <div class="card-body">
                             <h5 class="text-center">credits <strong id="credits">{{ credit }} </strong></h5>
-                            <button class="btn btn-warning btn-block photo-btn" onclick="getElementById('image_file').click()">photo</button><input class="m-auto" type="file" accept="image/*" required="" id="image_file" hidden="" capture></div>
+                            <button class="btn btn-warning btn-block photo-btn" onclick="getElementById('image_file').click()">files</button><input class="m-auto" type="file" accept="image/*" required="" id="image_file" hidden="" capture="" multiple=""></div>
                             <p class="text-center"><input id="enable-collection" type="checkbox"/> enable collection of some pictorial data to improve accuracy</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 col-lg-5 col-xl-5 no-padd">
+
+            <template id="results-template">
+            <div class="col-md-12 col-xl-6 no-padd">
                 <div class="px-padd app-div">
                     <div class="card app-card">
                         <div class="card-body">
                             <h4 class="text-center"> results</h4>
                             <h6 class="text-center" id="overall-score"> </h6>
                             <div class="row">
-                                <div class="col-6 no-padd">
-                                    <table class="table float-left">
-                                        <tbody id="wrong-answers-table-0"></tbody>
-                                    </table>
+                                <div class="col-md-6 col-sm-12 no-padd">
+                                    <img class="flex-nowrap tutorial-img" id="photo">
                                 </div>
-                                <div class="col-6 no-padd">
-                                    <table class="table">
-                                        <tbody id="wrong-answers-table-1"></tbody>
-                                    </table>
+ 
+                                <div class="col-md-6 col-sm-12 no-padd">
+                                    <div class="row">
+                                        <div class="col-6 no-padd">
+                                            <table class="table table-sm float-left">
+                                                <tbody id="wrong-answers-table-0"></tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-6 no-padd">
+                                            <table class="table table-sm">
+                                                <tbody id="wrong-answers-table-1"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-5 col-lg-5 col-xl-5 no-padd">
-                <div class="px-padd app-div">
-                    <div class="card app-card">
-                        <div class="card-body align-self-center" id="photo-card">
-                            <h4 class="text-center">photo </h4><img class="flex-nowrap tutorial-img" id="photo"></div>
-                    </div>
-                </div>
-            </div>
+            </template>
         </div>
     {% endblock %}
     {% block script %}
@@ -86,5 +89,5 @@
         JSON_URL = "{% url 'predict' %}"
     </script>
     <script src="{% static 'js/inside/eval-script.js' %}"></script>
-    <script src="{% static 'js/inside/evaluate.js' %}"></script>
+    <script src="{% static 'js/inside/evaluate-multi.js' %}"></script>
     {% endblock %}
